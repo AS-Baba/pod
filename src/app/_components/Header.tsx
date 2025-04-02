@@ -25,7 +25,7 @@ export default function Header() {
             <a href="#" className="text-gray-700 font-[550] hover:text-black">
               Buyer
             </a>
-            <a href="#" className="text-[#6D60F6] font-[700] hover:text-black">
+            <a href="#" className="text-[#6d60f6] font-[700] hover:text-black">
               Seller
             </a>
           </nav>
