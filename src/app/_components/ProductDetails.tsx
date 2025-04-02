@@ -9,7 +9,7 @@ export default function ProductDetails() {
   const [amount, setAmount] = useState(28000);
 
   const increment = () => {
-    setCount(count = count +1)
+    setCount(count  +1)
     setAmount(28000 * count);
   };
   const decrement = () => {
