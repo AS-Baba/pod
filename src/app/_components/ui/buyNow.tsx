@@ -21,7 +21,7 @@ export default function BuyNowSection() {
           <input
             type="text"
             placeholder="Where would you like to receive this item?"
-            className="w-full px-4 py-2 border-0 bg-[#fff] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6d60f6] placeholder:text-[12px] max-sm:placeholder:text-[8px] placeholder:line-clamp-3 truncate"
+            className="w-full px-4 py-2 border-0 bg-[#fff] text-[#111] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6d60f6] placeholder:text-[12px] max-sm:placeholder:text-[8px] truncate"
           />
         </div>
         <button className="w-[100px] max-sm:h-[40px] max-sm:text-[8px]  px-2 py-2 bg-[#6d60f6] text-white rounded-lg hover:bg-[#6d60f6] transition">Buy now</button>
