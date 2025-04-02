@@ -5,11 +5,11 @@ import StockStatus from "./ui/stockStatus";
 import BuyNowSection from "./ui/buyNow";
 
 export default function ProductDetails() {
-  let [count, setCount] = useState(1);
-  let [amount, setAmount] = useState(28000);
+  const [count, setCount] = useState(1);
+  const [amount, setAmount] = useState(28000);
 
   const increment = () => {
-    setCount(count = count +1)
+    setCount(count  +1)
     setAmount(28000 * count);
   };
   const decrement = () => {
