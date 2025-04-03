@@ -12,7 +12,7 @@ export default function ProductDetails() {
   const [checkout, setCheckout] = useState(false);
   const [address, setAddress] = useState("");
 
-  const increment = () => {
+  const increment = ():void => {
     setCount(count + 1);
     setAmount(28000 * count);
   };
@@ -21,7 +21,7 @@ export default function ProductDetails() {
     setAmount(28000 * count - 28000);
   };
 
-  const navigateTocheckout = (param:string) => {
+  const navigateTocheckout = (param:string):void => {
     if(param !== null){
       toast.error("Enter Delivery Address! ")
       return
@@ -30,7 +30,7 @@ export default function ProductDetails() {
     setCheckout(true);
   };
 
-  const goBack = () => {
+  const goBack = ():void => {
     setCheckout(false);
   };
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Trash2, Pencil } from "lucide-react";
 
-export default function CheckoutSection({ goBack, address }: string|null|any) {
+export default function CheckoutSection({ goBack, address }:any) {
   const [selectedDelivery, setSelectedDelivery] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const itemPrice = 28000;
@@ -13,7 +13,7 @@ export default function CheckoutSection({ goBack, address }: string|null|any) {
     ? itemPrice * quantity + deliveryFee
     : itemPrice * quantity;
 
-  const handleDeliveryChange = (type: string|null|any) => {
+  const handleDeliveryChange = (type: any) => {
     setSelectedDelivery(type);
   };
 
