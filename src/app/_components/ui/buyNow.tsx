@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 
-export default function BuyNowSection({ navigateToCheckout }) {
+export default function BuyNowSection({ navigateToCheckout }:string|null|any) {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
