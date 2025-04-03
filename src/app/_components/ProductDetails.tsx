@@ -22,7 +22,7 @@ export default function ProductDetails() {
   };
 
   const navigateTocheckout = (param:string):void => {
-    if(param !== null){
+    if(param === ''){
       toast.error("Enter Delivery Address! ")
       return
     }
