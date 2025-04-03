@@ -3,17 +3,19 @@
 import Image from "next/image";
 import { useState } from "react";
 
+interface BuyNowSectionProps {
+  navigateToCheckout: (address: string) => void;
+}
 
-
-export default function BuyNowSection({ navigateToCheckout }:string|null|any) {
-  const [inputValue, setInputValue] = useState("");
+export default function BuyNowSection({ navigateToCheckout }: BuyNowSectionProps) {
+  const [inputValue, setInputValue] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
   return (
-    <div className=" p-4 rounded-lg  mx-auto md:flex items-center justify-between ">
+    <div className="p-4 rounded-lg mx-auto md:flex items-center justify-between">
       {/* Left Section */}
       <div className="flex flex-col gap-1 text-[#080445] text-[10px] md:text-sm">
         <p>Buy this product and receive it today</p>
@@ -39,13 +41,13 @@ export default function BuyNowSection({ navigateToCheckout }:string|null|any) {
             value={inputValue}
             onChange={handleChange}
             placeholder="Where would you like to receive this item?"
-            className="w-full px-4 py-2 border-0 bg-[#fff] text-[#111] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6d60f6] placeholder:text-[12px] max-sm:placeholder:text-[8px] placeholder:text-[] truncate"
+            className="w-full px-4 py-2 border-0 bg-[#fff] text-[#111] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6d60f6] placeholder:text-[12px] max-sm:placeholder:text-[8px] truncate"
             required
           />
         </div>
         <button
           onClick={() => navigateToCheckout(inputValue)}
-          className="w-[100px] max-sm:h-[40px] max-sm:text-[8px]  px-2 py-2 bg-[#6d60f6] text-white rounded-lg hover:bg-[#6d60f6] transition"
+          className="w-[100px] max-sm:h-[40px] max-sm:text-[8px] px-2 py-2 bg-[#6d60f6] text-white rounded-lg hover:bg-[#6d60f6] transition"
         >
           Buy now
         </button>
