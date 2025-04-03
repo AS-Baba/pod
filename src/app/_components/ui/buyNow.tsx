@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 
+
+
 export default function BuyNowSection({ navigateToCheckout }: any) {
   const [inputValue, setInputValue] = useState("");
 
@@ -38,6 +40,7 @@ export default function BuyNowSection({ navigateToCheckout }: any) {
             onChange={handleChange}
             placeholder="Where would you like to receive this item?"
             className="w-full px-4 py-2 border-0 bg-[#fff] text-[#111] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6d60f6] placeholder:text-[12px] max-sm:placeholder:text-[8px] placeholder:text-[] truncate"
+            required
           />
         </div>
         <button

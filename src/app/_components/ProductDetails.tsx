@@ -4,6 +4,7 @@ import { useState } from "react";
 import StockStatus from "./ui/stockStatus";
 import BuyNowSection from "./ui/buyNow";
 import CheckoutSection from "./CheckoutSection";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function ProductDetails() {
   const [count, setCount] = useState(1);
@@ -21,6 +22,10 @@ export default function ProductDetails() {
   };
 
   const navigateTocheckout = (param:any) => {
+    if(param !== null){
+      toast.error("Enter Delivery Address! ")
+      return
+    }
     setAddress(param)
     setCheckout(true);
   };
@@ -31,6 +36,8 @@ export default function ProductDetails() {
 
   return (
     <>
+<Toaster position="top-right" reverseOrder={false} />
+
       <div className="px-11 mt-[80px]">
         {/* Breadcrumb  starts*/}
         <div className="flex space-x-4 items-center">
