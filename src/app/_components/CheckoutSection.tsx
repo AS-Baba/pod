@@ -13,7 +13,7 @@ export default function CheckoutSection({ goBack, address }: any) {
     ? itemPrice * quantity + deliveryFee
     : itemPrice * quantity;
 
-  const handleDeliveryChange = (type: any) => {
+  const handleDeliveryChange = (type: string) => {
     setSelectedDelivery(type);
   };
 

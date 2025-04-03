@@ -21,7 +21,7 @@ export default function ProductDetails() {
     setAmount(28000 * count - 28000);
   };
 
-  const navigateTocheckout = (param:any) => {
+  const navigateTocheckout = (param:string) => {
     if(param !== null){
       toast.error("Enter Delivery Address! ")
       return
