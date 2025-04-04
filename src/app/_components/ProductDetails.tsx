@@ -5,14 +5,19 @@ import StockStatus from "./ui/stockStatus";
 import BuyNowSection from "./ui/buyNow";
 import CheckoutSection from "./CheckoutSection";
 import { Toaster, toast } from "react-hot-toast";
+import OrderTracking from "./OrderTracking";
+import { Home } from "lucide-react";
 
 export default function ProductDetails() {
   const [count, setCount] = useState(1);
   const [amount, setAmount] = useState(28000);
+  const [details, setDetails] = useState(true);
   const [checkout, setCheckout] = useState(false);
+  const [payment, setPayment] = useState(false);
+  const [orderTracking, setOrderTracking] = useState(false);
   const [address, setAddress] = useState("");
 
-  const increment = ():void => {
+  const increment = (): void => {
     setCount(count + 1);
     setAmount(28000 * count);
   };
@@ -21,26 +26,43 @@ export default function ProductDetails() {
     setAmount(28000 * count - 28000);
   };
 
-  const navigateTocheckout = (param:string):void => {
-    if(param === ''){
-      toast.error("Enter Delivery Address! ")
-      return
+  const navigateTocheckout = (param: string): void => {
+    if (param === "") {
+      toast.error("Enter Delivery Address! ");
+      return;
     }
-    setAddress(param)
+    setAddress(param);
     setCheckout(true);
+     setDetails(false)
+    setOrderTracking(false)
+    setPayment(false)
   };
 
-  const goBack = ():void => {
+  const goBack = (): void => {
+    setDetails(true)
     setCheckout(false);
+    setOrderTracking(false)
+    setPayment(false)
   };
+  
+  const navigateToPayment = () => {
+    setPayment(false)
+    setCheckout(false)
+     setDetails(false)
+    setCheckout(false);
+    setOrderTracking(true)
+  }
 
   return (
     <>
-<Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false} />
 
-      <div className="px-11 mt-[80px]">
+      <div className="px-5 md:px-11 mt-[80px]">
         {/* Breadcrumb  starts*/}
-        <div className="flex space-x-4 items-center">
+       {orderTracking ? <div className="text-[14px] text-[#6D60F6] font-[600] " >
+        <Home size={15} color="#6D60F6" className="inline mr-2"/>
+        Go to dashboard</div>:
+       <div className="flex space-x-4 items-center">
           <Image
             src={"/assets/icons/arrow-left.png"}
             alt="arrow left"
@@ -53,10 +75,11 @@ export default function ProductDetails() {
             {">>"} <span className="cursor-pointer">New balance crocs</span>
           </p>
         </div>
+       }
         {/* Breadcrumb ends */}
 
         <div className="w-full lg:flex justify-center  ">
-          {!checkout ? (
+          {details && (
             <div className=" lg:w-4/5  h-auto bg-[#F2F4FF] rounded-lg mt-5 p-6">
               <p className="text-[12px] text-[#080445] ">
                 Shop thanau is selling the below item:
@@ -105,13 +128,27 @@ export default function ProductDetails() {
                   </div>
                 </div>
               </div>
-              <BuyNowSection
-                navigateToCheckout={navigateTocheckout}
-                
-              />
+              <BuyNowSection navigateToCheckout={navigateTocheckout} />
             </div>
-          ) : (
-            <CheckoutSection goBack={goBack} address={address}/>
+          ) }
+          { checkout &&(
+            <CheckoutSection goBack={goBack} address={address} navigateToPayment={navigateToPayment} />
+          ) }
+          
+          { orderTracking &&(
+            <OrderTracking
+              orderId="3456543"
+              product={{
+                name: "New balance Crocs",
+                price: "₦28,000",
+                size: "36",
+                image: "/assets/images/shoes.png",
+              }}
+              address="44, Awolowo Avenue, Yaba"
+              phone="0810105795"
+              estimatedTime="2:00pm"
+              status="shipped" // Change this dynamically based on API response
+            />
           )}
         </div>
       </div>
