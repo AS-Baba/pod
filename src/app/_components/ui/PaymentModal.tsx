@@ -11,6 +11,7 @@ interface PaymentModalProps {
   amount: string;
   reference: string;
   onConfirm: () => void;
+
 }
 
 export default function PaymentModal({
@@ -33,7 +34,7 @@ export default function PaymentModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#00000066] bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-[#00000066] bg-opacity-50 z-50 px-5">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-between items-center  pb-2">
           <h2 className="text-lg font-semibold">Payment</h2>
@@ -81,7 +82,7 @@ export default function PaymentModal({
         </div>
 
         <button
-          onClick={onConfirm}
+          onClick={onConfirm} 
           className="w-full bg-[#6d60f6] text-white py-2 mt-4 rounded-lg hover:bg-[#5c50d4] transition"
         >
           I have sent the money

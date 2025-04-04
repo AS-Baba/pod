@@ -8,11 +8,13 @@ import PaymentModal from "./ui/PaymentModal";
 interface CheckoutSectionProps {
   goBack: () => void;
   address: string;
+  navigateToPayment: () => void
 }
 
 export default function CheckoutSection({
   goBack,
   address,
+  navigateToPayment
 }: CheckoutSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDelivery, setSelectedDelivery] = useState<string | null>(null);
@@ -147,7 +149,7 @@ export default function CheckoutSection({
         accountNumber="234567876567654"
         amount="₦30,000"
         reference="PAYONDELIVERY*TOBECHUKWU-UDEOGU*8152"
-        onConfirm={() => alert("Payment Confirmed")}
+        onConfirm={() => navigateToPayment()}
       />
     </div>
   );
