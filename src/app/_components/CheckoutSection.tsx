@@ -3,13 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Trash2, Pencil } from "lucide-react";
+import PaymentModal from "./ui/PaymentModal";
 
 interface CheckoutSectionProps {
   goBack: () => void;
   address: string;
 }
 
-export default function CheckoutSection({ goBack, address }: CheckoutSectionProps) {
+export default function CheckoutSection({
+  goBack,
+  address,
+}: CheckoutSectionProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedDelivery, setSelectedDelivery] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
   const itemPrice = 28000;
@@ -28,7 +33,9 @@ export default function CheckoutSection({ goBack, address }: CheckoutSectionProp
       <div className="md:col-span-2 bg-white p-6 rounded-lg border border-zinc-200">
         <div className="flex justify-between items-center pb-4 mb-4">
           <div>
-            <h3 className="max-sm:text-[12px] text-[#111] font-[600]">Delivery address</h3>
+            <h3 className="max-sm:text-[12px] text-[#111] font-[600]">
+              Delivery address
+            </h3>
             <p className="text-[8px] md:text-[10px] text-[#111]">
               Saved address: {address}
             </p>
@@ -44,7 +51,10 @@ export default function CheckoutSection({ goBack, address }: CheckoutSectionProp
         <h3 className="text-[#111] font-[600] mb-2">Select delivery type</h3>
         <div className="md:w-1/2 space-y-3">
           {["Gokada Express", "Standard Delivery"].map((type, index) => (
-            <label key={index} className="flex items-center space-x-2 cursor-pointer">
+            <label
+              key={index}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
               <input
                 type="radio"
                 name="deliveryType"
@@ -119,6 +129,7 @@ export default function CheckoutSection({ goBack, address }: CheckoutSectionProp
         </div>
 
         <button
+        onClick={() => setIsOpen(true)}
           className={`mt-4 w-full py-2 text-white rounded-lg hover:bg-[#6c60f6d7] ${
             selectedDelivery ? "bg-[#6d60f6]" : "bg-gray-400 cursor-not-allowed"
           }`}
@@ -127,6 +138,17 @@ export default function CheckoutSection({ goBack, address }: CheckoutSectionProp
           Proceed
         </button>
       </div>
+
+
+      <PaymentModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        bankName="VFD Microfinance Bank"
+        accountNumber="234567876567654"
+        amount="₦30,000"
+        reference="PAYONDELIVERY*TOBECHUKWU-UDEOGU*8152"
+        onConfirm={() => alert("Payment Confirmed")}
+      />
     </div>
   );
 }
