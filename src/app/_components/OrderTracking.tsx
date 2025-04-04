@@ -1,6 +1,7 @@
 import { CheckCircle, Circle } from "lucide-react";
 import { useState } from "react";
 import ConfirmDeliveryModal from "./ui/ConfirmDeliveryModal";
+import Image from "next/image";
 
 interface OrderTrackingProps {
   orderId: string;
@@ -42,9 +43,11 @@ const OrderTracking: React.FC<OrderTrackingProps> = ({
           </button>
         </div>
         <div className="flex items-center space-x-4 mt-2">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
+            width={700}
+            height={700}
             className="w-16 h-16 rounded-md"
           />
           <div>

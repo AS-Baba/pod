@@ -13,7 +13,6 @@ export default function ProductDetails() {
   const [amount, setAmount] = useState(28000);
   const [details, setDetails] = useState(true);
   const [checkout, setCheckout] = useState(false);
-  const [payment, setPayment] = useState(false);
   const [orderTracking, setOrderTracking] = useState(false);
   const [address, setAddress] = useState("");
 
@@ -35,18 +34,15 @@ export default function ProductDetails() {
     setCheckout(true);
      setDetails(false)
     setOrderTracking(false)
-    setPayment(false)
   };
 
   const goBack = (): void => {
     setDetails(true)
     setCheckout(false);
     setOrderTracking(false)
-    setPayment(false)
   };
   
   const navigateToPayment = () => {
-    setPayment(false)
     setCheckout(false)
      setDetails(false)
     setCheckout(false);
