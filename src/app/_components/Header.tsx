@@ -4,10 +4,17 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const router = useRouter();
+  const navigateToLogin = () =>{
+    return router.push("/login");
+
+  }
+  
   return (
     <header className="bg-white  px-6 py-4 fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
@@ -36,7 +43,7 @@ export default function Header() {
           <a href="#" className="text-gray-700 hover:text-black">
             Help Center
           </a>
-          <Button variant="outline">Log In</Button>
+          <Button variant="outline" onClick={() => navigateToLogin()}>Log In</Button>
           <Button variant="default">Get Started</Button>
         </div>
 
