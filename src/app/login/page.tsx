@@ -23,7 +23,7 @@ export default function LoginPage() {
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Login</h2>
             <p className="text-sm">
-              Don't have an account?{" "}
+              Don&#39;t have an account?{" "}
               <a href="#" className="text-[#6d60f6] font-medium">
                 Sign Up
               </a>
